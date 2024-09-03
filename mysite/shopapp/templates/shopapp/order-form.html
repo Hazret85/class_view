@@ -1,0 +1,24 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  {% if request.method == 'POST' %}
+    Create order
+  {% else %}
+    Update order
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% if request.method == 'POST' %}
+    Create new order
+  {% else %}
+    Update order
+  {% endif %}
+  </h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  Delete order
+{% endblock %}
+
+{% block body %}
+  <h1>Are you sure you want to delete this order?</h1>
+  <p>Order by {% firstof order.user.first_name order.user.username %}</p>
+  <p>Promocode: <code>{{ order.promocode }}</code></p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes</button>
+  </form>
+  <a href="{{ back_url }}">No, go back</a>
+{% endblock %}
